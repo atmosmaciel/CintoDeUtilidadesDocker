@@ -2,19 +2,25 @@
 
 Once in a while, you may need to cleanup resources (containers, volumes, images, networks) ...
 These are some simple ways in which this can be done.
-    
+
 ## delete volumes
     
     // see: https://github.com/chadoe/docker-cleanup-volumes
     
-    $ docker volume rm $(docker volume ls -qf dangling=true)
+    $ docker volume rm $(docker volume ls -f dangling=true -q)
     $ docker volume ls -qf dangling=true | xargs -r docker volume rm
     
 ## delete networks
 
     $ docker network ls  
     $ docker network ls | grep "bridge"   
-    $ docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+    $ docker network ls | awk '$3 == "bridge" && $2 != "bridge" { print $1 }'
+
+    You can also see:
+
+    https://docs.docker.com/engine/reference/commandline/network_prune/
+
+    https://docs.docker.com/engine/reference/commandline/system_prune/
     
 ## remove docker images
     
