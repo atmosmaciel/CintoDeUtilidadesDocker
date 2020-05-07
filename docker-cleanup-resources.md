@@ -3,6 +3,23 @@
 Once in a while, you may need to cleanup resources (containers, volumes, images, networks) ...
 These are some simple ways in which this can be done.
 
+## To fast clean
+
+    // see: https://docs.docker.com/engine/reference/commandline/system_prune/#examples
+
+    ```
+    $ docker system prune
+
+    WARNING! This will remove:
+            - all stopped containers
+            - all networks not used by at least one container
+            - all dangling images
+            - all build cache
+    Are you sure you want to continue? [y/N] y
+    ```
+
+    NOTE: This does not seem to include removal of unused/dangling volumes. Try: `docker system prune -a --volumes`
+
 ## delete volumes
     
     // see: https://github.com/chadoe/docker-cleanup-volumes
