@@ -15,3 +15,7 @@ Para cuidar melhor de seus containers você pode utilizar algumas ferramentas pa
 --------------------
 
 *p.s: este repositório também é atualizado do [repositório pai](https://github.com/msfidelis/CintoDeUtilidadesDocker).*
+
+# Recursos de limpeza para Docker
+
+De vez em quando, pode ser necessário limpar recursos (contêineres, volumes, imagens, redes)... [Essas são algumas maneiras simples pelas quais isso pode ser feito.](docker-cleanup-resources.md)
