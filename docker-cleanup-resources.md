@@ -20,6 +20,22 @@ These are some simple ways in which this can be done.
 
     NOTE: This does not seem to include removal of unused/dangling volumes. Try: `docker system prune -a --volumes`
 
+### Using in composer
+
+// see: https://github.com/moby/moby/issues/31254#issuecomment-464668235
+
+```
+system-prune:
+    image: docker
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: docker system prune --all --force
+    deploy:
+      mode: global
+      restart_policy:
+        delay: 24h
+```
+
 ## delete volumes
     
     // see: https://github.com/chadoe/docker-cleanup-volumes
